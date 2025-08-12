@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Secret Web</title>
+    <style>
+        body {
+            background: #f0f4f8;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .box {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        form {
+            margin-bottom: 30px;
+        }
+
+        input[type="text"] {
+            width: 90%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 10px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        hr {
+            border: none;
+            height: 1px;
+            background: #eee;
+            margin: 30px 0;
+        }
+
+        small {
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>🔐 Welcome to Secret Web</h1>
+
+        <form action="{{ url_for('encrypt') }}" method="POST">
+            <input type="text" name="message" placeholder="Enter your message" required><br>
+            <input type="text" name="key" placeholder="Enter numeric key" required><br>
+            <button type="submit">Encrypt</button>
+        </form>
+
+        <hr>
+
+        <form action="{{ url_for('decrypt') }}" method="POST">
+            <input type="text" name="key" placeholder="Enter key to decrypt" required><br>
+            <button type="submit">Decrypt</button>
+        </form>
+
+        <small>Made with 💙 using Flask & SQLite</small>
+    </div>
+</body>
+</html>
